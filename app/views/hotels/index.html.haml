@@ -1,0 +1,11 @@
+- @hotels.each do |hotel|
+  %div.row
+    %h2= hotel.title
+    %div.span12= hotel.room_description
+    %div.span4= hotel.price_for_room
+    %div.span4= hotel.breakfast_included
+    %div.span4= 'rating#{hotel.avg_rating}'
+
+%br
+-if user_signed_in?
+  = link_to 'New Hotel', new_hotel_path, class:'btn'

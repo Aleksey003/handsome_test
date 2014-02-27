@@ -1,0 +1,23 @@
+%p#notice= notice
+
+%p
+  %b= @hotel.title
+%p
+  %b description:
+  %br
+  = @hotel.room_description
+%p
+  %b price: 
+  = @hotel.price_for_room
+%p
+  %b breakfast: 
+  = @hotel.breakfast_included
+  
+
+= render 'comments/form'
+
+= link_to 'Edit', edit_hotel_path(@hotel)
+\|
+= link_to 'Back', hotels_path
+
+= debug @comment

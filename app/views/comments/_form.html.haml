@@ -1,0 +1,11 @@
+= simple_form_for(@comment) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :rating, collection: 1..5, as: :radio_buttons
+    %div
+    = f.input :comment_text
+    = f.hidden_field :hotel_id
+
+  .form-actions
+    = f.button :submit
