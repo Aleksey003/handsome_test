@@ -13,6 +13,7 @@ class HotelsController < ApplicationController
     @hotel = Hotel.find(params[:id])
     @comment = @hotel.comments.new
     @comments = @hotel.comments
+    
   end
 
   # GET /hotels/new

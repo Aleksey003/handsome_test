@@ -1,5 +1,7 @@
 class Hotel < ActiveRecord::Base
 	has_many :comments
+  has_many :assets
+
 	validates_presence_of :title
 	
     def update_rating

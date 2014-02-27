@@ -37,7 +37,8 @@ gem "therubyracer"
 gem "less-rails"
 
 gem 'simple_form'
-
+gem "paperclip", "~> 4.1"
+gem 'jquery-fileupload-rails'
 group :test do 
 	gem 'rspec-rails'
 end
