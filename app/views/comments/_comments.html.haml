@@ -1,7 +1,6 @@
 %ul
 - @comments.each do |comment|
   %li
-    = comment.user.email
-     
+    = comment.comment_text
+    %i.icon-star
     = comment.rating
-    =d= link_to 'Destroy', comment, :method => :delete, :data => { :confirm => 'Are you sure?' }

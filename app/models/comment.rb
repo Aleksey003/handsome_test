@@ -4,10 +4,10 @@ class Comment < ActiveRecord::Base
   validates :rating, :inclusion => { :in => 1..5 }
   validates_presence_of :user
 
-  after_commit :update_rating
+  after_save :update_rating
 
   def update_rating
-    hotel.update_rating
+    self.hotel.update_rating
   end 
    
 end

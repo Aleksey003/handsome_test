@@ -11,6 +11,6 @@ class Hotel < ActiveRecord::Base
       else
         avg_rating = comments.map(&:rating).inject(0, &:+).to_f / comments_count
       end
-    self.update_attributes(avg_rating: avg_rating)
+    self.update_attributes!(avg_rating: avg_rating)
   end
 end

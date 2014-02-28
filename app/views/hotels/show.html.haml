@@ -1,22 +1,22 @@
 %p#notice= notice
 
 %p
-  %b= @hotel.title
+  %h1
+    %b= @hotel.title
 %p
-  %b description:
-  %br
   = @hotel.room_description
 %p
-  %b price: 
+  %b price -  
   = @hotel.price_for_room
-%p
-  %b breakfast: 
+  %b breakfast -  
   = @hotel.breakfast_included
 
 - @hotel.assets.each do |asset|
   = image_tag(asset.photo.url(:medium)) 
 
 = render 'comments/form'
+= render 'comments/comments'
+
 
 = link_to 'Edit', edit_hotel_path(@hotel)
 \|

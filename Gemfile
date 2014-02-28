@@ -41,6 +41,8 @@ gem "paperclip", "~> 4.1"
 gem 'jquery-fileupload-rails'
 group :test do 
 	gem 'rspec-rails'
+    gem 'capybara'
+    gem 'database_cleaner'
 end
 
 

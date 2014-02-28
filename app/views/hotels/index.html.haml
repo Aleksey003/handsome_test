@@ -1,12 +1,11 @@
-- @hotels.each do |hotel|
-  %div.row
-    %h2= link_to "#{hotel.title}", hotel 
-    %div.span12
+%ul.thumbnails
+  - @hotels.each do |hotel|
+    %li.span12
+      %hr
+      %h2= link_to "#{hotel.title}", hotel 
       = truncate(hotel.room_description, length: 300) 
       = link_to 'more', hotel
-    %div.span4= hotel.price_for_room
-    %div.span4= hotel.breakfast_included
-    %div.span4= 'rating#{hotel.avg_rating}'
+      %div= "rating #{hotel.avg_rating}"
 
 %br
 -if user_signed_in?
