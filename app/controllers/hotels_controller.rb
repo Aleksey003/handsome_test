@@ -4,7 +4,11 @@ class HotelsController < ApplicationController
   # GET /hotels
   # GET /hotels.json
   def index
-    @hotels = Hotel.all
+    if params[:top]
+      @hotels = Hotel.order(:avg_rating).limit(params[:top])
+    else
+      @hotels = Hotel.all
+    end
   end
 
   # GET /hotels/1

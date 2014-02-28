@@ -1,9 +1,10 @@
 Hams::Application.routes.draw do
 
+  root to:'hotels#index', top: "5"
   resources :comments
 
   devise_for :users
-  root 'hotels#index'
+  
   resources :hotels
   resources :assets
   
