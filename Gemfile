@@ -43,6 +43,7 @@ group :test do
 	gem 'rspec-rails'
     gem 'capybara'
     gem 'database_cleaner'
+    gem "selenium-webdriver", "~> 2.40.0"
 end
 
 

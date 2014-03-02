@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140227195034) do
+ActiveRecord::Schema.define(version: 20140302205704) do
 
   create_table "assets", force: true do |t|
     t.integer  "hotel_id"
@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 20140227195034) do
   add_index "comments", ["hotel_id"], name: "index_comments_on_hotel_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
+  create_table "countries", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "hotels", force: true do |t|
     t.string   "title"
     t.text     "room_description"
@@ -45,7 +51,10 @@ ActiveRecord::Schema.define(version: 20140227195034) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "avg_rating",         default: 0.0
+    t.integer  "country_id"
   end
+
+  add_index "hotels", ["country_id"], name: "index_hotels_on_country_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

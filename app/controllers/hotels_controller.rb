@@ -5,7 +5,7 @@ class HotelsController < ApplicationController
   # GET /hotels.json
   def index
     if params[:top]
-      @hotels = Hotel.order(:avg_rating).limit(params[:top])
+      @hotels = Hotel.order('avg_rating DESC').limit(params[:top])
     else
       @hotels = Hotel.all
     end
@@ -77,6 +77,6 @@ class HotelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hotel_params
-      params.require(:hotel).permit(:title, :room_description, :price_for_room, :breakfast_included)
+      params.require(:hotel).permit(:title, :room_description, :price_for_room, :breakfast_included, :country_id)
     end
 end

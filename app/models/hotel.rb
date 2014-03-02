@@ -1,6 +1,7 @@
 class Hotel < ActiveRecord::Base
 	has_many :comments
   has_many :assets
+  belongs_to :country
 
 	validates_presence_of :title
 	

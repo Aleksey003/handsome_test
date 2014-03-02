@@ -8,8 +8,14 @@
 	%body
 		%div.navbar.navbar
 			%div.navbar-inner
-				%ul.nav.nav-pills.pull-right
+				%ul.nav.nav-pills.pull-left	
+					%li
+						= link_to "all hotels", hotels_path
 					- if user_signed_in?
+						%li
+							= link_to 'countries', countries_path
+				%ul.nav.nav-pills.pull-right
+					- if user_signed_in?						
 						%li
 							%span.label.label-info 
 								= current_user.email

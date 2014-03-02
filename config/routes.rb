@@ -1,5 +1,7 @@
 Hams::Application.routes.draw do
 
+  resources :countries
+
   root to:'hotels#index', top: "5"
   resources :comments
 

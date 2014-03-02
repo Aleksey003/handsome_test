@@ -17,8 +17,6 @@ describe Hotel do
         hotel2.comments.create!(user: user, rating:2, comment_text: 'comment 2')
         hotel1.update_rating
         hotel2.update_rating
-        p hotel1.avg_rating
-        p hotel2.avg_rating
         (expect(hotel1.avg_rating).to eq 2.5) &&  (expect(hotel2.avg_rating).to eq 2)
     end
   end
