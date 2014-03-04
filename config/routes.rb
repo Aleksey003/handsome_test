@@ -1,5 +1,11 @@
 Hams::Application.routes.draw do
 
+  resources :streets
+
+  resources :cities
+
+  resources :states
+
   resources :countries
 
   root to:'hotels#index', top: "5"

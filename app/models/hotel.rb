@@ -2,6 +2,9 @@ class Hotel < ActiveRecord::Base
 	has_many :comments
   has_many :assets
   belongs_to :country
+  belongs_to :state
+  belongs_to :city
+  belongs_to :street
 
 	validates_presence_of :title
 	

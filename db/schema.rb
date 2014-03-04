@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140302205704) do
+ActiveRecord::Schema.define(version: 20140304123238) do
 
   create_table "assets", force: true do |t|
     t.integer  "hotel_id"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20140302205704) do
   end
 
   add_index "assets", ["hotel_id"], name: "index_assets_on_hotel_id"
+
+  create_table "cities", force: true do |t|
+    t.string   "title"
+    t.integer  "state_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cities", ["state_id"], name: "index_cities_on_state_id"
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -52,9 +61,33 @@ ActiveRecord::Schema.define(version: 20140302205704) do
     t.datetime "updated_at"
     t.float    "avg_rating",         default: 0.0
     t.integer  "country_id"
+    t.integer  "state_id"
+    t.integer  "city_id"
+    t.integer  "street_id"
   end
 
+  add_index "hotels", ["city_id"], name: "index_hotels_on_city_id"
   add_index "hotels", ["country_id"], name: "index_hotels_on_country_id"
+  add_index "hotels", ["state_id"], name: "index_hotels_on_state_id"
+  add_index "hotels", ["street_id"], name: "index_hotels_on_street_id"
+
+  create_table "states", force: true do |t|
+    t.string   "title"
+    t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "states", ["country_id"], name: "index_states_on_country_id"
+
+  create_table "streets", force: true do |t|
+    t.string   "title"
+    t.integer  "city_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "streets", ["city_id"], name: "index_streets_on_city_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
