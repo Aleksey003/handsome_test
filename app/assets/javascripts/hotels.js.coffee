@@ -1,3 +1,9 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+window.initApp = ->
+  $('select[data-dynamic-selectable-url][data-dynamic-selectable-target]').dynamicSelectable()
+
+document.addEventListener 'page:load', initApp
+
+$ initApp

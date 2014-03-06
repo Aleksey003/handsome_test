@@ -15,6 +15,13 @@ Hams::Application.routes.draw do
   
   resources :hotels
   resources :assets
+
+  namespace :dynamic_select do
+    get ':country_id/states', to: 'states#index', as: 'states'
+    get ':state_id/cities',   to: 'cities#index', as: 'cities'
+    get ':city_id/streets', to: 'streets#index', as: 'streets'
+  end
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
