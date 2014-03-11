@@ -42,6 +42,7 @@ gem 'jquery-fileupload-rails'
 group :test do 
 	gem 'rspec-rails'
     gem 'capybara'
+    gem 'factory_girl_rails'
     gem 'database_cleaner'
     gem "selenium-webdriver", "~> 2.40.0"
 end
