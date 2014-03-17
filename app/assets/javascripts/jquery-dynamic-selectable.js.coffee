@@ -9,7 +9,6 @@ class DynamicSelectable
     @init($select)
 
   init: ($select) ->
-    console.log('init_app')
     @urlTemplate = $select.data('dynamicSelectableUrl')
     @$targetSelect = $($select.data('dynamicSelectableTarget'))
     $select.on 'change', =>

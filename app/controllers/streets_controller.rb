@@ -1,64 +1,35 @@
 class StreetsController < ApplicationController
   before_action :set_street, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :except => [:index, :show]
+  respond_to :html
 
-  # GET /streets
-  # GET /streets.json
   def index
     @streets = Street.all
+    respond_with @streets
   end
 
-  # GET /streets/1
-  # GET /streets/1.json
   def show
   end
 
-  # GET /streets/new
   def new
     @street = Street.new
   end
 
-  # GET /streets/1/edit
   def edit
   end
 
-  # POST /streets
-  # POST /streets.json
   def create
-    @street = Street.new(street_params)
-
-    respond_to do |format|
-      if @street.save
-        format.html { redirect_to @street, notice: 'Street was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @street }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @street.errors, status: :unprocessable_entity }
-      end
-    end
+    @street = Street.create(street_params)
+    respond_with @street
   end
 
-  # PATCH/PUT /streets/1
-  # PATCH/PUT /streets/1.json
   def update
-    respond_to do |format|
-      if @street.update(street_params)
-        format.html { redirect_to @street, notice: 'Street was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @street.errors, status: :unprocessable_entity }
-      end
-    end
+    @street.update(street_params)
+    respond_with @street
   end
 
-  # DELETE /streets/1
-  # DELETE /streets/1.json
   def destroy
     @street.destroy
-    respond_to do |format|
-      format.html { redirect_to streets_url }
-      format.json { head :no_content }
-    end
   end
 
   private

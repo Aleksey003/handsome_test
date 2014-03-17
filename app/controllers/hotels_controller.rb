@@ -1,6 +1,7 @@
 class HotelsController < ApplicationController
   before_action :set_hotel, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :json
+  before_action :authenticate_user!, :except => [:index, :show]
+  respond_to :html
 
   def index
     if params[:top]
@@ -13,8 +14,6 @@ class HotelsController < ApplicationController
 
   def show
     @hotel = Hotel.find(params[:id])
-    @comment = @hotel.comments.new
-    @comments = @hotel.comments
     respond_with(@hotel, @comment, @comments)
   end
 
@@ -26,25 +25,13 @@ class HotelsController < ApplicationController
   end
 
   def create
-    @hotel = Hotel.new(hotel_params)
-
-    respond_to do |format|
-      if @hotel.save
-        format.html { redirect_to hotels_path, notice: 'Hotel was successfully created.' }
-      else
-        format.html { render action: 'new' }
-      end
-    end
+    @hotel = Hotel.create(hotel_params)
+    respond_with @hotel
   end
 
   def update
-    respond_to do |format|
-      if @hotel.update(hotel_params)
-        format.html { redirect_to hotels_path, notice: 'Hotel was successfully updated.' }
-      else
-        format.html { render action: 'edit' }
-      end
-    end
+    @hotel.update(hotel_params)
+    respond_with @hotel
   end
 
   def destroy

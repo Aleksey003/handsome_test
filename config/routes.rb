@@ -1,5 +1,7 @@
 Hams::Application.routes.draw do
 
+  root to:'hotels#index', top: "5"
+
   resources :streets
 
   resources :cities
@@ -8,13 +10,13 @@ Hams::Application.routes.draw do
 
   resources :countries
 
-  root to:'hotels#index', top: "5"
-  resources :comments
-
   devise_for :users
-  
-  resources :hotels
+
   resources :assets
+  
+  resources :hotels do
+    resources :comments, only: [:create]
+  end
 
   namespace :dynamic_select do
     get ':country_id/states', to: 'states#index', as: 'states'

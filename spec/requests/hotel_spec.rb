@@ -44,7 +44,8 @@ describe Hotel do
             page.should have_link('New Hotel', href: new_hotel_path)
         end
 
-        it 'should create new hotel' do 
+        it 'should create new hotel' do
+            cookied_login
             visit new_hotel_path
             fill_in 'hotel[title]', with: 'my test hotel'
             fill_in 'hotel[room_description]', with: 'my test hotel description'
